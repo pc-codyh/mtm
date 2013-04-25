@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+
+
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+
+
+    <TextView
+        android:id="@+id/nd_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title" />
+
+
+    <EditText
+        android:id="@+id/nd_title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+
+
+    <TextView
+        android:id="@+id/nd_num_plyrs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of Players" />
+
+
+    <NumberPicker
+        android:id="@+id/nd_num_plyrs_sel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+    <TextView
+        android:id="@+id/nd_draft_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Draft Type" />
+
+
+    <ExpandableListView
+        android:id="@+id/nd_draft_type_sel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    </ExpandableListView>
+
+
+
+    <TextView
+        android:id="@+id/nd_playoffs_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Playoffs?" />
+
+
+
+    <CheckBox
+        android:id="@+id/nd_playoffs_sel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes" />
+
+
+
+    <TextView
+        android:id="@+id/nd_playoffs_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Playoffs Type" />
+
+
+    <ExpandableListView
+        android:id="@+id/nd_playoffs_type_sel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    </ExpandableListView>
+
+
+
+    <TextView
+        android:id="@+id/nd_playoffs_num_plyrs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of Players to Make Playoffs" />
+
+
+    <NumberPicker
+        android:id="@+id/nd_playoffs_num_plyrs_sel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+    <Button
+        android:id="@+id/nd_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue" />
+
+</LinearLayout>
+</ScrollView>
