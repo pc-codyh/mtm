@@ -14,24 +14,30 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int nd_continue=0x7f05000c;
-        public static final int nd_draft_type=0x7f050004;
-        public static final int nd_draft_type_sel=0x7f050005;
-        public static final int nd_num_plyrs=0x7f050002;
-        public static final int nd_num_plyrs_sel=0x7f050003;
-        public static final int nd_playoffs_num_plyrs=0x7f05000a;
-        public static final int nd_playoffs_num_plyrs_sel=0x7f05000b;
-        public static final int nd_playoffs_sel=0x7f050007;
-        public static final int nd_playoffs_title=0x7f050006;
-        public static final int nd_playoffs_type=0x7f050008;
-        public static final int nd_playoffs_type_sel=0x7f050009;
-        public static final int nd_title=0x7f050000;
-        public static final int nd_title_text=0x7f050001;
-        public static final int textView1=0x7f05000d;
+        public static final int at_standings=0x7f050000;
+        public static final int nd_continue=0x7f050011;
+        public static final int nd_group_num_games=0x7f05000a;
+        public static final int nd_group_num_games_title=0x7f050009;
+        public static final int nd_groups_title=0x7f050007;
+        public static final int nd_num_groups=0x7f050008;
+        public static final int nd_num_plyrs=0x7f050003;
+        public static final int nd_num_plyrs_sel=0x7f050004;
+        public static final int nd_playoffs_num_plyrs=0x7f05000f;
+        public static final int nd_playoffs_num_plyrs_sel=0x7f050010;
+        public static final int nd_playoffs_sel=0x7f05000c;
+        public static final int nd_playoffs_title=0x7f05000b;
+        public static final int nd_playoffs_type=0x7f05000d;
+        public static final int nd_playoffs_type_sel=0x7f05000e;
+        public static final int nd_title=0x7f050001;
+        public static final int nd_title_text=0x7f050002;
+        public static final int nd_tournament_type=0x7f050005;
+        public static final int nd_tournament_type_sel=0x7f050006;
+        public static final int textView1=0x7f050012;
     }
     public static final class layout {
-        public static final int new_tournament=0x7f030000;
-        public static final int splash_screen=0x7f030001;
+        public static final int active_tournament=0x7f030000;
+        public static final int new_tournament=0x7f030001;
+        public static final int splash_screen=0x7f030002;
     }
     public static final class string {
         public static final int app_name=0x7f040001;

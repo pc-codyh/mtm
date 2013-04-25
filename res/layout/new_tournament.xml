@@ -46,24 +46,41 @@
         android:id="@+id/nd_num_plyrs_sel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
-
-
+
     <TextView
-        android:id="@+id/nd_draft_type"
+        android:id="@+id/nd_tournament_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Draft Type" />
-
-
+        android:text="Tournament Type" />
+
     <ExpandableListView
-        android:id="@+id/nd_draft_type_sel"
+        android:id="@+id/nd_tournament_type_sel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
     </ExpandableListView>
-
-
+
+    <TextView
+        android:id="@+id/nd_groups_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of Groups" />
+
+    <NumberPicker
+        android:id="@+id/nd_num_groups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/nd_group_num_games_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of Prelim Games Per Player" />
+
+    <NumberPicker
+        android:id="@+id/nd_group_num_games"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/nd_playoffs_title"

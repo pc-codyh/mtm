@@ -13,8 +13,6 @@ public class MainMenu extends ListActivity
 	// Any new option for the main menu should be added
 	// into this array.
 	String _classes[] = {"New Tournament", "Load Tournament", "Completed Tournaments"};
-	
-	Utility _util;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -39,7 +37,7 @@ public class MainMenu extends ListActivity
 		{
 			// We have to remove all whitespace from the selected item
 			// because class/activity names do not allow spaces.
-			startActivity(new Intent("cody.mtmanager.com." + _util.removeAllSpaces(_classes[position])));
+			startActivity(new Intent("cody.mtmanager.com." + Utility.removeAllSpaces(_classes[position])));
 		}
 		catch (Exception e)
 		{
@@ -51,6 +49,6 @@ public class MainMenu extends ListActivity
 	// This prevents cluttering in the onCreate method.
 	private void initializeGlobalVariables()
 	{
-		_util = new Utility();
+		
 	}
 }

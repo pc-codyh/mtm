@@ -6,6 +6,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TableRow;
 import android.widget.Toast;
 
 public class Utility
@@ -13,22 +14,40 @@ public class Utility
 	////////////////////
 	// DEFAULT VALUES //
 	////////////////////
-	public final int MIN_PLAYERS = 5;
-	public final int MAX_PLAYERS = 8;
-	public final int MIN_PLAYERS_PLAYOFFS = 2;
+	static final int MIN_PLAYERS = 4;
+	static final int MAX_PLAYERS = 32;
+	static final int MIN_PLAYERS_PLAYOFFS = 2;
+	
+	static final int POOL_PLAY = 0;
+	static final int SINGLE_ELIM = 1;
+	static final int DOUBLE_ELIM = 2;
 	
 	// String array that holds the possible draft types.
-	public final String TOURNAMENT_TYPES[] = {"Elimination", "Round Robin"};
+	static final String TOURNAMENT_TYPES[] = {"Elimination", "Round Robin"};
 	
 	// String array that holds the possible
 	// elimination draft sub-types.
-	public final String TOURNAMENT_SUBTYPES_ELIM[] = {"Single Elimination", "Double Elimination"};
+	static final String TOURNAMENT_SUBTYPES_ELIM[] = {"Single Elimination", "Double Elimination"};
 	
 	// String array that holds the possible
 	// round robin draft sub-types. Order
 	// here matters - "Pool Play" should be
 	// first.
-	public final String TOURNAMENT_SUBTYPES_RR[] = {"Pool Play"};
+	static final String TOURNAMENT_SUBTYPES_RR[] = {"Pool Play"};
+	
+	// Default parameters to modify the width and height of a TableRow.
+	static TableRow.LayoutParams DEFAULT_ROW_PARAMS = new TableRow.LayoutParams
+	(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+	
+	// Parameters to modify the width, height, and weight of a TextView.
+	// Used in the tournament's standings table (for the name column).
+	static TableRow.LayoutParams NAME_ROW_PARAMS = new TableRow.LayoutParams
+	(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.4f);
+	
+	// Parameters to modify the width, height, and weight of a TextView.
+	// Used in the tournament's standings table (for the stats columns).
+	static TableRow.LayoutParams STAT_ROW_PARAMS = new TableRow.LayoutParams
+	(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.2f);
 	////////////////////
 	
 	// Default constructor.
@@ -38,7 +57,7 @@ public class Utility
 	}
 	
 	// Remove all whitespace in a string.
-	public String removeAllSpaces(String str)
+	public static String removeAllSpaces(String str)
 	{
 		return str.replaceAll(" ", "");
 	}
@@ -46,12 +65,12 @@ public class Utility
 	////////////////////////////////////////////////
 	// Display short and long toasts to the user. //
 	////////////////////////////////////////////////
-	public void displayShortMessage(String msg, Context context)
+	public static void displayShortMessage(String msg, Context context)
 	{
 		Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
 	}
 	
-	public void displayLongMessage(String msg, Context context)
+	public static void displayLongMessage(String msg, Context context)
 	{
 		Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
 	}
@@ -60,7 +79,7 @@ public class Utility
 	// Function to manually set the height of a ListView.
 	// This function is primarily to mend the effects
 	// of using a ListView inside a ScrollView.
-	public void setListViewHeightBasedOnChildren(ListView listView)
+	public static void setListViewHeightBasedOnChildren(ListView listView)
 	{
 		ListAdapter listAdapter = listView.getAdapter();
 		
