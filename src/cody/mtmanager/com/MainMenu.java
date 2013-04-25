@@ -19,8 +19,6 @@ public class MainMenu extends ListActivity
 	{
 		super.onCreate(savedInstanceState);
 		
-		initializeGlobalVariables();
-		
 		// Load up the options into the main menu.
 		setListAdapter(new ArrayAdapter<String>(MainMenu.this, android.R.layout.simple_list_item_1, _classes));
 	}
@@ -43,12 +41,5 @@ public class MainMenu extends ListActivity
 		{
 			e.printStackTrace();
 		}
-	}
-	
-	// Function to initialize all global variables.
-	// This prevents cluttering in the onCreate method.
-	private void initializeGlobalVariables()
-	{
-		
 	}
 }

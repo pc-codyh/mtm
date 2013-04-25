@@ -304,6 +304,8 @@ public class NewTournament extends Activity
 		{	
 			public void onClick(View v)
 			{
+				// Check to make sure all fields are valid
+				// before beginning the tournament.
 				if (allFieldsValid())
 				{
 					Intent intent = new Intent("cody.mtmanager.com.ActiveTournament");
