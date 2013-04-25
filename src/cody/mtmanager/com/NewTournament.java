@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
 import android.widget.TextView;
@@ -52,8 +54,9 @@ public class NewTournament extends Activity
 		setPossibleTournamentTypes();
 		setPlayoffContentVisibility(false);
 		setOnCheckChangeListener(_isPlayoffs);
+		setTournamentTypesOnClickListener();
 	}
-	
+
 	// Function to initialize all global variables.
 	// This prevents cluttering in the onCreate method.
 	private void initializeGlobalVariables()
@@ -152,5 +155,23 @@ public class NewTournament extends Activity
 			_playoffTypesList.setVisibility(View.INVISIBLE);
 			_numPlyrsPlayoffs.setVisibility(View.INVISIBLE);
 		}
+	}
+	
+	// Function to handle clicking an item
+	// in the ExpandableListView.
+	private void setTournamentTypesOnClickListener()
+	{
+		_tournamentTypesList.setOnChildClickListener(new OnChildClickListener()
+		{
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id)
+			{
+				String selectedItem = CustomExpandableListAdapter._children[groupPosition][childPosition];
+				
+				
+				
+				return false;
+			}
+		});
 	}
 }

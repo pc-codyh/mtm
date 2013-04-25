@@ -1,6 +1,7 @@
 package cody.mtmanager.com;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
@@ -11,11 +12,12 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter
 	private Context _context;
 	
 	// The parent group for the ExpandableListView.
-	String _parent[];
-	String _children[][];
+	static String _parent[];
+	static String _children[][];
 	
 	private final int PARENT_OFFSET = 60;
 	private final int CHILD_OFFSET = (PARENT_OFFSET * 2);
+	private final int LIST_ITEM_PADDING = 10;
 	
 	// Default constructor.
 	public CustomExpandableListAdapter(Context context, String[] parent, String[]... children)
@@ -43,7 +45,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter
 		TextView tv = new TextView(_context);
 		
 		tv.setText(_children[groupPosition][childPosition]);
-		tv.setPadding(CHILD_OFFSET, 0, 0, 0);
+		tv.setPadding(CHILD_OFFSET, LIST_ITEM_PADDING, LIST_ITEM_PADDING, LIST_ITEM_PADDING);
 		
 		return tv;
 	}
@@ -80,7 +82,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter
 		TextView tv = new TextView(_context);
 		
 		tv.setText(_parent[groupPosition]);
-		tv.setPadding(PARENT_OFFSET, 0, 0, 0);
+		tv.setPadding(PARENT_OFFSET, LIST_ITEM_PADDING, LIST_ITEM_PADDING, LIST_ITEM_PADDING);
 		
 		return tv;
 	}

@@ -1,14 +1,18 @@
 package cody.mtmanager.com;
 
+import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class Utility
 {
-	// * DEFAULT VALUES * //
+	////////////////////
+	// DEFAULT VALUES //
+	////////////////////
 	public final int MIN_PLAYERS = 5;
 	public final int MAX_PLAYERS = 8;
 	public final int MIN_PLAYERS_PLAYOFFS = 2;
@@ -21,9 +25,11 @@ public class Utility
 	public final String TOURNAMENT_SUBTYPES_ELIM[] = {"Single Elimination", "Double Elimination"};
 	
 	// String array that holds the possible
-	// round robin draft sub-types.
+	// round robin draft sub-types. Order
+	// here matters - "Pool Play" should be
+	// first.
 	public final String TOURNAMENT_SUBTYPES_RR[] = {"Pool Play"};
-	//********************//
+	////////////////////
 	
 	// Default constructor.
 	public Utility()
@@ -36,6 +42,20 @@ public class Utility
 	{
 		return str.replaceAll(" ", "");
 	}
+	
+	////////////////////////////////////////////////
+	// Display short and long toasts to the user. //
+	////////////////////////////////////////////////
+	public void displayShortMessage(String msg, Context context)
+	{
+		Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+	}
+	
+	public void displayLongMessage(String msg, Context context)
+	{
+		Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+	}
+	////////////////////////////////////////////////
 	
 	// Function to manually set the height of a ListView.
 	// This function is primarily to mend the effects
