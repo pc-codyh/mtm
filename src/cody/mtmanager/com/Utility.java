@@ -22,6 +22,9 @@ public class Utility
 	static final int SINGLE_ELIM = 1;
 	static final int DOUBLE_ELIM = 2;
 	
+	// Reorderable ListView background color.
+	static final int BACKGROUND_COLOR = 0xFFFF0000;
+	
 	// String array that holds the possible draft types.
 	static final String TOURNAMENT_TYPES[] = {"Elimination", "Round Robin"};
 	

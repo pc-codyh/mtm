@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/es_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The default standings categories are W (wins), L (losses), and OTL (overtime losses). Choose the optional categories to include below."
+        android:textColor="#FF0000" />
+
+    <CheckBox
+        android:id="@+id/es_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Points" />
+
+    <TextView
+        android:id="@+id/es_points_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Points: Win = 2, Loss = 0, Overtime Loss = 1."
+        android:textSize="10dp" />
+
+    <CheckBox
+        android:id="@+id/es_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score" />
+
+    <TextView
+        android:id="@+id/es_score_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score: The total difference in the score of each game. For example, if Player A wins 3-1 then their score would be +2 and if Player B loses 4-3 then their score would be -1."
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/es_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue" />
+
+</LinearLayout>

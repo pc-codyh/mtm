@@ -38,6 +38,27 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".PlayerSetup" >
+            <intent-filter>
+                <action android:name="cody.mtmanager.com.PlayerSetup" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ExtraStats" >
+            <intent-filter>
+                <action android:name="cody.mtmanager.com.ExtraStats" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".OrderTiebreakers" >
+            <intent-filter>
+                <action android:name="cody.mtmanager.com.OrderTiebreakers" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -308,7 +308,7 @@ public class NewTournament extends Activity
 				// before beginning the tournament.
 				if (allFieldsValid())
 				{
-					Intent intent = new Intent("cody.mtmanager.com.ActiveTournament");
+					Intent intent = new Intent("cody.mtmanager.com.PlayerSetup");
 
 					addExtras(intent);
 					startActivity(intent);

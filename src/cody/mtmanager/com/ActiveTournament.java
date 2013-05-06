@@ -1,5 +1,7 @@
 package cody.mtmanager.com;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +16,9 @@ public class ActiveTournament extends Activity
 	
 	// Standings Table.
 	TableLayout _standings;
+	
+	// Tournament participants.
+	ArrayList<String> _participants;
 	
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -41,6 +46,15 @@ public class ActiveTournament extends Activity
 		Bundle extras = getIntent().getExtras();
 		
 		_numPlyrs = extras.getInt("NUM_PLAYERS");
+		
+		_participants = new ArrayList<String>(_numPlyrs);
+		
+		// Add each participant from the Bundle
+		// to the tournament participants array.
+		for (int i = 0; i < _numPlyrs; i++)
+		{
+			_participants.add(extras.getString("PARTICIPANT" + i));
+		}
 	}
 	
 	// Function to create a TableLayout to display
@@ -63,14 +77,26 @@ public class ActiveTournament extends Activity
 			if (i == 0)
 			{
 				name.setText("Player / Team");
-				wins.setText("Wins");
-				losses.setText("Losses");
-				otlosses.setText("OT Losses");
+				wins.setText("W");
+				losses.setText("L");
+				otlosses.setText("OTL");
 				
 				name.setTextColor(Color.RED);
 				wins.setTextColor(Color.RED);
 				losses.setTextColor(Color.RED);
 				otlosses.setTextColor(Color.RED);
+			}
+			else
+			{
+				// Set the name equal to the (i - 1)th
+				// participant since we added an extra
+				// row for column titles.
+				name.setText(_participants.get(i - 1));
+				
+				// Default the stats columns to "0".
+				wins.setText("0");
+				losses.setText("0");
+				otlosses.setText("0");
 			}
 			
 			// Modify the width, height, and weight
