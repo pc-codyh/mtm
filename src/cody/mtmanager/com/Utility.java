@@ -22,6 +22,8 @@ public class Utility
 	static final int SINGLE_ELIM = 1;
 	static final int DOUBLE_ELIM = 2;
 	
+	static final int ANIMATION_DURATION = 300;
+	
 	// Reorderable ListView background color.
 	static final int BACKGROUND_COLOR = 0xFFFF0000;
 	

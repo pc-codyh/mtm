@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/menu_standings" android:title="View Standings"></item><item android:id="@+id/menu_playoffs" android:title="View Playoffs"></item><item android:id="@+id/menu_schedule" android:title="View Schedule"></item>
+    
+    
+    <item android:id="@+id/menu_save" android:title="Save Tournament"></item><item android:id="@+id/menu_help" android:title="Help"></item>
+    
+    
+
+</menu>

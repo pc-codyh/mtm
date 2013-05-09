@@ -70,6 +70,18 @@
         android:id="@+id/nd_num_groups"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/nd_schedule_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Auto-Generate Schedule?" />
+
+    <CheckBox
+        android:id="@+id/nd_schedule_sel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes" />
 
     <TextView
         android:id="@+id/nd_group_num_games_title"

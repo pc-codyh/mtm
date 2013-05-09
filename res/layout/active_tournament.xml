@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/at_standings"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/at_frame"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/at_standings"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:alpha="255" >
 
-</TableLayout>
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/at_schedule"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:alpha="255" >
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/at_help"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:alpha="255"
+        android:text="Help text..." />
+
+</FrameLayout>

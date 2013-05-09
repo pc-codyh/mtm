@@ -44,12 +44,17 @@ public class NewTournament extends Activity
 	// or not for this tournament.
 	CheckBox _isPlayoffs;
 	
+	// CheckBox to choose if the schedule
+	// will be auto-generated.
+	CheckBox _autoSchedule;
+	
 	// Section titles.
 	TextView _tournamentTypeTitle;
 	TextView _playoffsTitle;
 	TextView _numPlyrsPlayoffsTitle;
 	TextView _numGroupsTitle;
 	TextView _numPrelimGamesTitle;
+	TextView _autoScheduleTitle;
 	
 	// Button to advance to the next screen.
 	Button _continue;
@@ -65,11 +70,18 @@ public class NewTournament extends Activity
 		
 		initializeGlobalVariables();
 		
+		// Set the minimum number of groups and
+		// prelim games in a pool play situation.
+		_numGroupGames.setMinValue(1);
+		_numGroups.setMinValue(1);
+		
 		setMinAndMaxPlayerValues();
 		setPossibleTournamentTypes();
 		setPlayoffContentVisibility(false);
 		setGroupContentVisibility(false);
+		setPrelimGamesVisibility(false);
 		setOnCheckChangeListener(_isPlayoffs);
+		setOnScheduleChangeListener(_autoSchedule);
 		setTournamentTypesOnClickListener();
 		setOnContinueClickListener();
 	}
@@ -87,12 +99,14 @@ public class NewTournament extends Activity
 		_playoffTypesList = (ExpandableListView) findViewById(R.id.nd_playoffs_type_sel);
 		
 		_isPlayoffs = (CheckBox) findViewById(R.id.nd_playoffs_sel);
+		_autoSchedule = (CheckBox) findViewById(R.id.nd_schedule_sel);
 		
 		_tournamentTypeTitle = (TextView) findViewById(R.id.nd_tournament_type);
 		_playoffsTitle = (TextView) findViewById(R.id.nd_playoffs_type);
 		_numPlyrsPlayoffsTitle = (TextView) findViewById(R.id.nd_playoffs_num_plyrs);
 		_numGroupsTitle = (TextView) findViewById(R.id.nd_groups_title);
 		_numPrelimGamesTitle = (TextView) findViewById(R.id.nd_group_num_games_title);
+		_autoScheduleTitle = (TextView) findViewById(R.id.nd_schedule_title);
 		
 		_continue = (Button) findViewById(R.id.nd_continue);
 	}
@@ -124,6 +138,14 @@ public class NewTournament extends Activity
 			public void onValueChange(NumberPicker picker, int oldVal, int newVal)
 			{
 				_numPlyrsPlayoffs.setMaxValue(newVal);
+				
+				// Players can play at most everybody else
+				// once, i.e. all players except themselves.
+				_numGroupGames.setMaxValue((newVal - 1));
+				
+				// There must be at least two players
+				// in each group.
+				_numGroups.setMaxValue((newVal / 2));
 			}
 		});
 	}
@@ -159,6 +181,37 @@ public class NewTournament extends Activity
 		});
 	}
 	
+	// Function that is called when the value of the
+	// schedule CheckBox is changed. Checking this
+	// CheckBox will enable the visibility of the
+	// number of prelim games NumberPicker.
+	private void setOnScheduleChangeListener(CheckBox cb)
+	{
+		cb.setOnCheckedChangeListener(new OnCheckedChangeListener()
+		{
+			public void onCheckedChanged(CompoundButton checkBox, boolean isChecked)
+			{
+				setPrelimGamesVisibility(isChecked);
+			}
+		});
+	}
+	
+	// Function to toggle the visibility of the
+	// prelim games NumberPicker.
+	private void setPrelimGamesVisibility(boolean isVisible)
+	{
+		if (isVisible)
+		{
+			_numPrelimGamesTitle.setVisibility(View.VISIBLE);
+			_numGroupGames.setVisibility(View.VISIBLE);
+		}
+		else
+		{
+			_numPrelimGamesTitle.setVisibility(View.INVISIBLE);
+			_numGroupGames.setVisibility(View.INVISIBLE);
+		}
+	}
+	
 	// Function to toggle the visibility of the
 	// playoff content.
 	private void setPlayoffContentVisibility(boolean isVisible)
@@ -187,16 +240,16 @@ public class NewTournament extends Activity
 		if (isVisible)
 		{
 			_numGroupsTitle.setVisibility(View.VISIBLE);
-			_numPrelimGamesTitle.setVisibility(View.VISIBLE);
 			_numGroups.setVisibility(View.VISIBLE);
-			_numGroupGames.setVisibility(View.VISIBLE);
+			_autoSchedule.setVisibility(View.VISIBLE);
+			_autoScheduleTitle.setVisibility(View.VISIBLE);
 		}
 		else
 		{
 			_numGroupsTitle.setVisibility(View.INVISIBLE);
-			_numPrelimGamesTitle.setVisibility(View.INVISIBLE);
 			_numGroups.setVisibility(View.INVISIBLE);
-			_numGroupGames.setVisibility(View.INVISIBLE);
+			_autoSchedule.setVisibility(View.INVISIBLE);
+			_autoScheduleTitle.setVisibility(View.INVISIBLE);
 		}
 	}
 	

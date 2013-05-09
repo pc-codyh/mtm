@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.TranslateAnimation;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -17,8 +23,21 @@ public class ActiveTournament extends Activity
 	// Standings Table.
 	TableLayout _standings;
 	
+	// Schedule Table.
+	TableLayout _schedule;
+	
+	// Help text.
+	TextView _help;
+	
+	// ArrayList holding the Views selectable
+	// in the Options Menu.
+	ArrayList<View> _views;
+	
 	// Tournament participants.
 	ArrayList<String> _participants;
+	
+	// Default Animation.
+	Animation _defaultAnimation;
 	
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -37,6 +56,22 @@ public class ActiveTournament extends Activity
 	private void initializeGlobalVariables()
 	{
 		_standings = (TableLayout) findViewById(R.id.at_standings);
+		_schedule = (TableLayout) findViewById(R.id.at_schedule);
+		_help = (TextView) findViewById(R.id.at_help);
+		
+		_views = new ArrayList<View>();
+		
+		_views.add(_standings);
+		_views.add(_schedule);
+		_views.add(_help);
+		
+		// Create the default View Animation.
+		_defaultAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f,
+												   Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+		_defaultAnimation.setDuration(Utility.ANIMATION_DURATION);
+		
+		// Set the standings as the default View.
+		bringViewToFront(_standings, false);
 	}
 	
 	// Function to load the extras passed in
@@ -116,6 +151,85 @@ public class ActiveTournament extends Activity
 			
 			// Finally, add the row to the TableLayout.
 			_standings.addView(row);
+		}
+	}
+	
+	//////////////////
+	// OPTIONS MENU //
+	//////////////////
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		getMenuInflater().inflate(R.menu.options_menu, menu);
+		
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+			case R.id.menu_standings:
+			{
+				bringViewToFront(_standings, true);
+			
+				return true;
+			}
+			
+			case R.id.menu_playoffs:
+			{
+				return true;
+			}
+			
+			case R.id.menu_schedule:
+			{
+				bringViewToFront(_schedule, true);
+				
+				return true;
+			}
+			
+			case R.id.menu_save:
+			{
+				return true;
+			}
+			
+			case R.id.menu_help:
+			{
+				bringViewToFront(_help, true);
+				
+				return true;
+			}
+			
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+	}
+	
+	// Function to bring the chosen View
+	// to the front.
+	private void bringViewToFront(View view, boolean isAnimated)
+	{
+		if (isAnimated)
+		{
+			AnimationSet set = new AnimationSet(true);
+			
+			set.addAnimation(_defaultAnimation);
+			
+			view.startAnimation(_defaultAnimation);
+		}
+		
+		// Enable the View passed in.
+		view.setVisibility(View.VISIBLE);
+		
+		// Disable the remaining Views.
+		for (View v : _views)
+		{
+			if (v != view)
+			{
+				v.setVisibility(View.INVISIBLE);
+			}
 		}
 	}
 }
