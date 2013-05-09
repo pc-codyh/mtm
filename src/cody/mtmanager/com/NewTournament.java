@@ -2,6 +2,7 @@ package cody.mtmanager.com;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -50,7 +51,7 @@ public class NewTournament extends Activity
 	
 	// Section titles.
 	TextView _tournamentTypeTitle;
-	TextView _playoffsTitle;
+	TextView _playoffTypeTitle;
 	TextView _numPlyrsPlayoffsTitle;
 	TextView _numGroupsTitle;
 	TextView _numPrelimGamesTitle;
@@ -61,6 +62,9 @@ public class NewTournament extends Activity
 	
 	// The tournament type selected.
 	int _tournamentTypeSelected = -1;
+	
+	// The playoff type selected.
+	int _playoffTypeSelected = -1;
 	
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -82,7 +86,8 @@ public class NewTournament extends Activity
 		setPrelimGamesVisibility(false);
 		setOnCheckChangeListener(_isPlayoffs);
 		setOnScheduleChangeListener(_autoSchedule);
-		setTournamentTypesOnClickListener();
+		setTournamentTypesOnClickListener(_tournamentTypesList, false);
+		setTournamentTypesOnClickListener(_playoffTypesList, true);
 		setOnContinueClickListener();
 	}
 
@@ -102,7 +107,7 @@ public class NewTournament extends Activity
 		_autoSchedule = (CheckBox) findViewById(R.id.nd_schedule_sel);
 		
 		_tournamentTypeTitle = (TextView) findViewById(R.id.nd_tournament_type);
-		_playoffsTitle = (TextView) findViewById(R.id.nd_playoffs_type);
+		_playoffTypeTitle = (TextView) findViewById(R.id.nd_playoffs_type);
 		_numPlyrsPlayoffsTitle = (TextView) findViewById(R.id.nd_playoffs_num_plyrs);
 		_numGroupsTitle = (TextView) findViewById(R.id.nd_groups_title);
 		_numPrelimGamesTitle = (TextView) findViewById(R.id.nd_group_num_games_title);
@@ -218,14 +223,14 @@ public class NewTournament extends Activity
 	{
 		if (isVisible)
 		{
-			_playoffsTitle.setVisibility(View.VISIBLE);
+			_playoffTypeTitle.setVisibility(View.VISIBLE);
 			_numPlyrsPlayoffsTitle.setVisibility(View.VISIBLE);
 			_playoffTypesList.setVisibility(View.VISIBLE);
 			_numPlyrsPlayoffs.setVisibility(View.VISIBLE);
 		}
 		else
 		{
-			_playoffsTitle.setVisibility(View.INVISIBLE);
+			_playoffTypeTitle.setVisibility(View.INVISIBLE);
 			_numPlyrsPlayoffsTitle.setVisibility(View.INVISIBLE);
 			_playoffTypesList.setVisibility(View.INVISIBLE);
 			_numPlyrsPlayoffs.setVisibility(View.INVISIBLE);
@@ -254,16 +259,16 @@ public class NewTournament extends Activity
 	}
 	
 	// Function to handle clicking an item
-	// in the ExpandableListView.
-	private void setTournamentTypesOnClickListener()
+	// in the tournament ExpandableListView.
+	private void setTournamentTypesOnClickListener(ExpandableListView listView, final boolean isPlayoffs)
 	{
-		_tournamentTypesList.setOnChildClickListener(new OnChildClickListener()
+		listView.setOnChildClickListener(new OnChildClickListener()
 		{
 			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id)
 			{
 				String selectedItem = CustomExpandableListAdapter._children[groupPosition][childPosition];
 				
-				handleSelectedItem(selectedItem);
+				handleSelectedItem(selectedItem, isPlayoffs);
 				
 				return false;
 			}
@@ -272,64 +277,100 @@ public class NewTournament extends Activity
 	
 	// Function to handle the selected item
 	// in the ExpandableListView.
-	private void handleSelectedItem(String selectedItem)
+	private void handleSelectedItem(String selectedItem, boolean isPlayoffs)
 	{
+		int type = -1;
+		
 		// The chosen tournament style is "Pool Play"
 		// and the group information should be shown.
 		if (selectedItem.equalsIgnoreCase("Pool Play"))
 		{
-			setGroupContentVisibility(true);
+			if (!isPlayoffs)
+			{
+				setGroupContentVisibility(true);
+			}
 			
-			_tournamentTypeSelected = Utility.POOL_PLAY;
+			type = Utility.POOL_PLAY;
 		}
 		// The chosen tournament style is not "Pool Play"
 		// and the group information should be hidden.
 		else
 		{
-			setGroupContentVisibility(false);
+			if (!isPlayoffs)
+			{
+				setGroupContentVisibility(false);
+			}
 			
 			if (selectedItem.equalsIgnoreCase("Single Elimination"))
 			{
-				_tournamentTypeSelected = Utility.SINGLE_ELIM;
+				type = Utility.SINGLE_ELIM;
 			}
 			else if (selectedItem.equalsIgnoreCase("Double Elimination"))
 			{
-				_tournamentTypeSelected = Utility.DOUBLE_ELIM;
+				type = Utility.DOUBLE_ELIM;
 			}
 		}
 		
-		setTournamentTypeTitle(_tournamentTypeSelected);
+		if (isPlayoffs)
+		{
+			_playoffTypeSelected = type;
+			
+			setTournamentTypeTitle(_playoffTypeSelected, true);
+		}
+		else
+		{
+			_tournamentTypeSelected = type;
+			
+			setTournamentTypeTitle(_tournamentTypeSelected, false);
+		}
 	}
 	
 	// Function to modify the displayed tournament
 	// type title.
-	private void setTournamentTypeTitle(int type)
+	private void setTournamentTypeTitle(int type, boolean isPlayoffs)
 	{
+		TextView tv = null;
+		String str = null;
+		
+		// Select the appropriate title to modify.
+		if (isPlayoffs)
+		{
+			tv = _playoffTypeTitle;
+			str = "Playoff Type: ";
+		}
+		else
+		{
+			tv = _tournamentTypeTitle;
+			str = "Tournament Type: ";
+		}
+		
+		// Select the appropriate title.
 		switch (type)
 		{
 			case Utility.POOL_PLAY:
 			{
-				_tournamentTypeTitle.setText("Tournament Type: Pool Play");
+				str += "Pool Play";
 			}
 				break;
 				
 			case Utility.SINGLE_ELIM:
 			{
-				_tournamentTypeTitle.setText("Tournament Type: Single Elimination");
+				str += "Single Elimination";
 			}
 				break;
 				
 			case Utility.DOUBLE_ELIM:
 			{
-				_tournamentTypeTitle.setText("Tournament Type: Double Elimination");
+				str += "Double Elimination";
 			}
 				break;
 				
 			default:
 				break;
 		}
-		
-		_tournamentTypeTitle.setTextColor(Color.RED);
+
+		tv.setText(str);
+		tv.setTextColor(Color.RED);
 	}
 	
 	// Function to check whether the information
@@ -347,6 +388,11 @@ public class NewTournament extends Activity
 	private void addExtras(Intent intent)
 	{
 		intent.putExtra("NUM_PLAYERS", _numPlyrs.getValue());
+		intent.putExtra("NUM_GROUPS", _numGroups.getValue());
+		intent.putExtra("NUM_PRELIM_GAMES", _numGroupGames.getValue());
+		intent.putExtra("NUM_PLAYERS_IN_PLAYOFFS", _numPlyrsPlayoffs.getValue());
+		intent.putExtra("TOURNAMENT_TYPE", _tournamentTypeSelected);
+		intent.putExtra("PLAYOFF_TYPE", _playoffTypeSelected);
 	}
 	
 	// Function to handle pressing the "Continue"

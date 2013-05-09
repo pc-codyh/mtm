@@ -66,8 +66,8 @@ public class ActiveTournament extends Activity
 		_views.add(_help);
 		
 		// Create the default View Animation.
-		_defaultAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f,
-												   Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+		_defaultAnimation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f,
+												   Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
 		_defaultAnimation.setDuration(Utility.ANIMATION_DURATION);
 		
 		// Set the standings as the default View.
