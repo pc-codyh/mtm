@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/at_frame"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-
+
     <TableLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/at_standings"
@@ -12,20 +13,29 @@
         android:alpha="255" >
 
     </TableLayout>
-
-    <TableLayout
+
+    <ListView
         android:id="@+id/at_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    </ListView>
+
+    <TableLayout
+        android:id="@+id/at_record_game"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_marginTop="48dp"
         android:alpha="255" >
 
     </TableLayout>
-
+
     <TextView
         android:id="@+id/at_help"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:alpha="255"
         android:text="Help text..." />
-
+    
+    <include android:layout_width="fill_parent" layout="@layout/record"></include>
 </FrameLayout>

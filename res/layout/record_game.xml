@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Spinner
+            android:id="@+id/rg_player_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".8" />
+
+        <EditText
+            android:id="@+id/rg_score_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2"
+            android:inputType="number"
+            android:maxWidth="0dp" >
+
+            <requestFocus />
+        </EditText>
+
+    </TableRow>
+
+    <TextView
+        android:id="@+id/rg_versus_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Versus" />
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Spinner
+            android:id="@+id/rg_player_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".8" />
+
+        <EditText
+            android:id="@+id/rg_score_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2"
+            android:inputType="number"
+            android:maxWidth="0dp" />
+
+    </TableRow>
+
+    <CheckBox
+        android:id="@+id/rg_overtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Overtime?" />
+
+    <Button
+        android:id="@+id/rg_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:minWidth="160dp"
+        android:text="Submit" />
+
+</LinearLayout>

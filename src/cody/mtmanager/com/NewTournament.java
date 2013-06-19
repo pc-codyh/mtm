@@ -45,17 +45,12 @@ public class NewTournament extends Activity
 	// or not for this tournament.
 	CheckBox _isPlayoffs;
 	
-	// CheckBox to choose if the schedule
-	// will be auto-generated.
-	CheckBox _autoSchedule;
-	
 	// Section titles.
 	TextView _tournamentTypeTitle;
 	TextView _playoffTypeTitle;
 	TextView _numPlyrsPlayoffsTitle;
 	TextView _numGroupsTitle;
 	TextView _numPrelimGamesTitle;
-	TextView _autoScheduleTitle;
 	
 	// Button to advance to the next screen.
 	Button _continue;
@@ -85,7 +80,6 @@ public class NewTournament extends Activity
 		setGroupContentVisibility(false);
 		setPrelimGamesVisibility(false);
 		setOnCheckChangeListener(_isPlayoffs);
-		setOnScheduleChangeListener(_autoSchedule);
 		setTournamentTypesOnClickListener(_tournamentTypesList, false);
 		setTournamentTypesOnClickListener(_playoffTypesList, true);
 		setOnContinueClickListener();
@@ -104,14 +98,12 @@ public class NewTournament extends Activity
 		_playoffTypesList = (ExpandableListView) findViewById(R.id.nd_playoffs_type_sel);
 		
 		_isPlayoffs = (CheckBox) findViewById(R.id.nd_playoffs_sel);
-		_autoSchedule = (CheckBox) findViewById(R.id.nd_schedule_sel);
 		
 		_tournamentTypeTitle = (TextView) findViewById(R.id.nd_tournament_type);
 		_playoffTypeTitle = (TextView) findViewById(R.id.nd_playoffs_type);
 		_numPlyrsPlayoffsTitle = (TextView) findViewById(R.id.nd_playoffs_num_plyrs);
 		_numGroupsTitle = (TextView) findViewById(R.id.nd_groups_title);
 		_numPrelimGamesTitle = (TextView) findViewById(R.id.nd_group_num_games_title);
-		_autoScheduleTitle = (TextView) findViewById(R.id.nd_schedule_title);
 		
 		_continue = (Button) findViewById(R.id.nd_continue);
 	}
@@ -186,21 +178,6 @@ public class NewTournament extends Activity
 		});
 	}
 	
-	// Function that is called when the value of the
-	// schedule CheckBox is changed. Checking this
-	// CheckBox will enable the visibility of the
-	// number of prelim games NumberPicker.
-	private void setOnScheduleChangeListener(CheckBox cb)
-	{
-		cb.setOnCheckedChangeListener(new OnCheckedChangeListener()
-		{
-			public void onCheckedChanged(CompoundButton checkBox, boolean isChecked)
-			{
-				setPrelimGamesVisibility(isChecked);
-			}
-		});
-	}
-	
 	// Function to toggle the visibility of the
 	// prelim games NumberPicker.
 	private void setPrelimGamesVisibility(boolean isVisible)
@@ -246,15 +223,11 @@ public class NewTournament extends Activity
 		{
 			_numGroupsTitle.setVisibility(View.VISIBLE);
 			_numGroups.setVisibility(View.VISIBLE);
-			_autoSchedule.setVisibility(View.VISIBLE);
-			_autoScheduleTitle.setVisibility(View.VISIBLE);
 		}
 		else
 		{
 			_numGroupsTitle.setVisibility(View.INVISIBLE);
 			_numGroups.setVisibility(View.INVISIBLE);
-			_autoSchedule.setVisibility(View.INVISIBLE);
-			_autoScheduleTitle.setVisibility(View.INVISIBLE);
 		}
 	}
 	
@@ -377,9 +350,8 @@ public class NewTournament extends Activity
 	// entered in the fields is valid.
 	private boolean allFieldsValid()
 	{
-		////////////////////////////////////
-		// FUNCTION NEEDS TO BE COMPLETED //
-		////////////////////////////////////
+		// NEEDS TO BE COMPLETED.
+		
 		return true;
 	}
 	

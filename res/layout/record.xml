@@ -1,0 +1,15 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/at_record_game_background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/at_save_game"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Record Game" />
+
+</LinearLayout>

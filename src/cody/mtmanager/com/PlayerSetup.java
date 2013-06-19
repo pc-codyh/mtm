@@ -95,6 +95,10 @@ public class PlayerSetup extends Activity
 	// passed to the next Activity.
 	private void addExtras(Intent intent)
 	{
+		Bundle extras = getIntent().getExtras();
+		
+		intent.putExtras(extras);
+		
 		int count = 0;
 		
 		// Add each participant to the list of

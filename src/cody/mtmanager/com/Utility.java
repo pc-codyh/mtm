@@ -52,7 +52,7 @@ public class Utility
 	// Parameters to modify the width, height, and weight of a TextView.
 	// Used in the tournament's standings table (for the stats columns).
 	static TableRow.LayoutParams STAT_ROW_PARAMS = new TableRow.LayoutParams
-	(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.2f);
+	(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.12f);
 	////////////////////
 	
 	// Default constructor.
@@ -113,7 +113,7 @@ public class Utility
 		
 		// Final adjustments to the total height of
 		// the ListView.
-		params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+		params.height = ((totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1))) / 2);
 		
 		listView.setLayoutParams(params);
 		listView.requestLayout();
